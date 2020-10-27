@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Work</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/index.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between fixed-top">
+            <a class="navbar-brand h1" href="/">Аналіз працевлаштування</a>
+
+            <form id="search" class="form-inline my-2 my-lg-0">
+                <input id="search-box" class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Знайти</button>
+            </form>
+        </nav>
+
+        <main class="container">
+            <div class="jumbotron my-3" style="background:transparent !important">
+                <table id="table-info" class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th id="doc" scope="col" style="width: 12%">Документ</th>
+                            <th scope="col" style="width: 12%">Код</th>
+                            <th id="name" scope="col">ПІБ</th>
+                            <th scope="col" style="width: 5%">Робота</th>
+                            <th scope="col" style="width: 10%">Видалити</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="person : ${peoples}">
+                            <th scope="row" th:text="${person.document}"></th>
+                            <td th:text="${person.codeId}"></td>
+                            <td th:text="${person.name}"></td>
+                            <td th:text="${person.work}"></td>
+                            <td>
+                                <button class="btn btn-dark del" th:value="${person.document}" type="button">Видалити</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+<!--            <div aria-atomic="true" aria-live="polite" style="position: relative; min-height: 200px;">-->
+<!--                <div class="toast" style="position: absolute; top: 0; right: 0;">-->
+<!--                    <div class="toast-header">-->
+<!--                        <strong id="id" class="mr-auto"></strong>-->
+<!--                        <small>був видалений</small>-->
+<!--                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">-->
+<!--                            <span aria-hidden="true">&times;</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </main>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <script th:src="@{/index.js}"></script>
+
+    </body>
+</html>
